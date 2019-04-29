@@ -73,20 +73,22 @@ div {
             <th>Button</th>
 
         </tr>
-        {% for student in student_data.values() %}
-        <tr>
-            <td width="8px">{{student['roll_number']}}</td>
-            <td>{{student['name']}}</td>
-            <td>{{student['age']}}</td>
-            <td>{{student['gender']}}</td>
-            <td>
-                <form id="delete_form" method="post">
-                    <button type="submit" formaction="/delete/{{student['roll_number']}}">Delete</button>
-                </form>
+        {% if student_data %}
+            {% for student in student_data.values() %}
+            <tr>
+                <td width="8px">{{student['roll_number']}}</td>
+                <td>{{student['name']}}</td>
+                <td>{{student['age']}}</td>
+                <td>{{student['gender']}}</td>
+                <td>
+                    <form id="delete_form" method="post">
+                        <button type="submit" formaction="/delete/{{student['roll_number']}}">Delete</button>
+                    </form>
 
-            </td>
-        </tr>
-        {% endfor%}
+                    </td>
+                </tr>
+            {% endfor%}
+        {% endif %}
     </table>
 </div>
 
