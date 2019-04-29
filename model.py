@@ -4,11 +4,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
+user_name = 'your user_name'
+password = str('your password')
 
-engine = create_engine('mysql+pymysql://root:12345@localhost')
+engine = create_engine('mysql+pymysql://' + user_name + ':' + password + '@localhost')
 engine.execute("CREATE DATABASE IF NOT EXISTS studentdatabase")  # create db
-engine.execute("USE studentdatabase"
-
+engine.execute("USE studentdatabase")
 engine.connect()
 Session = sessionmaker()
 Session.configure(bind=engine)
