@@ -30,11 +30,14 @@ def search_student_details(roll_number=None):
 
 
 def show_student_details(roll_number=None):
+    data = {}
     if roll_number:
         all_students = session.query(Student).filter_by(roll_number=roll_number).all()
     else:
         all_students = session.query(Student).all()
-    data = {}
+        if not all_students:
+            data = None
+
     for i in all_students:
         student_data = {}
         student_data['roll_number'] = i.roll_number
