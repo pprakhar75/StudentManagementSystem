@@ -5,7 +5,9 @@ from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
-engine = create_engine('mysql+pymysql://root:12345@localhost/studentDatabase')
+engine = create_engine('mysql+pymysql://root:12345@localhost')
+engine.execute("CREATE DATABASE IF NOT EXISTS studentdatabase")  # create db
+engine.execute("USE studentdatabase"
 
 engine.connect()
 Session = sessionmaker()
